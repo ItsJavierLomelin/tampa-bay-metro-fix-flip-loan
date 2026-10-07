@@ -1,0 +1,51 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import {brand,domain} from '../data/cities';
+const url=`https://${domain}/fix-and-flip-project-checklist/`;
+const faqs=[{q:"How detailed should my repair scope be?",a:"Detailed enough that someone who has not seen the house can understand the work. A room-by-room list with the major systems called out works well."},{q:"What if I do not have contractor bids yet?",a:"Say so and describe how you built your scope. It is better to flag what is still unconfirmed than to guess."},{q:"Where do I find nearby sales?",a:"A real estate agent or the public records for the county can show recent sales. Pick homes of similar size and condition in the same city or neighborhood."}];
+const jsonld=[{'@context':'https://schema.org','@type':'WebPage',name:'Fix and Flip Project Checklist',url,description:'A checklist for preparing a fix and flip project in Tampa Bay: the property, the repair scope, the resale support and the local items to check first.',isPartOf:{'@type':'WebSite',name:brand,url:`https://${domain}/`}},{'@context':'https://schema.org','@type':'FAQPage',mainEntity:faqs.map(f=>({'@type':'Question',name:f.q,acceptedAnswer:{'@type':'Answer',text:f.a}}))},{'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Home',item:`https://${domain}/`},{'@type':'ListItem',position:2,name:'Fix and Flip Project Checklist',item:url}]}];
+---
+<Base title="Fix and Flip Project Checklist | Tampa Bay Fix and Flip Loans" description="A checklist for preparing a fix and flip project in Tampa Bay: the property, the repair scope, the resale support and the local items to check first." path="/fix-and-flip-project-checklist/" jsonld={jsonld} fabHref="/#deal-form">
+<Header base="/"/><main>
+<section class="guide-hero"><div class="container"><h1>Fix and Flip Project Checklist</h1></div></section>
+<section class="section"><div class="container guide-prose">
+<p>A complete package is the fastest way to get a clear answer. This checklist covers what funding sources usually want to see and Tampa Bay items worth checking before you send anything.</p>
+<p>We are connectors. We use what you send to introduce your project to funding sources, so the clearer the package, the smoother the conversation.</p>
+</div></section>
+<section class="section section--tint"><div class="container guide-prose">
+<h2>The property</h2>
+<ul class="guide-list">
+<li>Address, property type and number of bedrooms and baths</li>
+<li>The signed contract or the offer you plan to make</li>
+<li>Photos of every room, the roof, the basement and the exterior</li>
+<li>Anything known about water, settlement, wiring or heating problems</li>
+</ul>
+</div></section>
+<section class="section"><div class="container guide-prose">
+<h2>The repair scope</h2>
+<ul class="guide-list">
+<li>A room-by-room list of work, with major systems named</li>
+<li>Who will do the work and the timeline you expect</li>
+<li>Permit needs, confirmed with the city or county office</li>
+<li>Safety and structural items listed ahead of cosmetic ones</li>
+</ul>
+</div></section>
+<section class="section section--tint"><div class="container guide-prose">
+<h2>The resale plan</h2>
+<ul class="guide-list">
+<li>Three or more recent sales of similar homes nearby</li>
+<li>Your estimate of the finished value and how you reached it</li>
+<li>The buyer you expect: owner-occupant, investor or rental buyer</li>
+<li>How long you expect the project to take from closing to sale</li>
+</ul>
+</div></section>
+<section class="section"><div class="container guide-prose">
+<h2>Tampa Bay items to check first</h2>
+<p>Confirm the property’s jurisdiction before contacting a permit office. Tampa lists Hyde Park, Seminole Heights, Tampa Heights and Ybor City among its local historic districts; designation and the planned exterior work determine which questions to ask. For a property in a flood hazard area, confirm how substantial improvement or damage rules affect your scope with the relevant city or county office.</p>
+<p>When your package is ready, <a href="/#deal-form">send your project</a>. For the full process, read <a href="/how-fix-and-flip-funding-works-in-florida/">how fix and flip funding works in Florida</a>.</p>
+</div></section>
+<section class="section section--tint" id="faq"><div class="container faq"><h2>Common questions</h2><div>{faqs.map(f=><details><summary>{f.q}</summary><p>{f.a}</p></details>)}</div></div></section>
+<section class="final-cta"><div class="container"><h2>Have a property in mind?</h2><p>Tell us what you plan to buy and improve. We will review the details and connect you with funding sources without promising an outcome.</p><a class="btn" href="/#deal-form">Submit your project <span aria-hidden="true">↗</span></a></div></section>
+</main><Footer/></Base>

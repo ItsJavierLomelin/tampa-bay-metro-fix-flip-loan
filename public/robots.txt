@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tampabayfixandflip.loansapp.cfd/sitemap.xml

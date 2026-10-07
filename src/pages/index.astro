@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CityContent from '../components/CityContent.astro';
+import {brand,domain,cities} from '../data/cities';
+const title='Fix and Flip Loans in Tampa Bay, FL | Tampa Bay Fix and Flip Loans';
+const description='We connect Tampa, St. Petersburg and Clearwater area investors with fix and flip funding sources. Funding within 48 hours. Tell us your goal.';
+const businessId=`https://${domain}/#business`;
+const faq=[{q:'Are you a direct lender?',a:'No. We are connectors. We introduce investors to funding sources, and the funding source determines eligibility and terms.'},{q:'Does submitting guarantee funding?',a:'No. A submission starts a review, not an approval or commitment.'}];
+const areas=cities.map(c=>({'@type':'City',name:c.name,containedInPlace:{'@type':'State',name:'Florida'}}));
+const jsonld=[{'@context':'https://schema.org','@type':'WebSite',name:brand,url:`https://${domain}/`},{'@context':'https://schema.org','@type':'FinancialService','@id':businessId,name:brand,url:`https://${domain}/`,areaServed:areas,description:'Fix and flip funding connections for real estate investors across Tampa Bay. Not a direct lender.'},{'@context':'https://schema.org','@type':'Service',serviceType:'Fix and flip funding connection service',provider:{'@id':businessId},areaServed:areas},{'@context':'https://schema.org','@type':'FAQPage',mainEntity:faq.map(f=>({'@type':'Question',name:f.q,acceptedAnswer:{'@type':'Answer',text:f.a}}))}];
+---
+<Base title={title} description={description} path="/" jsonld={jsonld}><Header/><main><CityContent cityName="Tampa Bay" location="Homepage" intro="A Tampa historic-district renovation, a St. Petersburg exterior project and a Clearwater storm-repair plan each need a different scope. Share the property, the work and the resale you have in mind. We are connectors, not a direct lender." angle="Start with the parcel, not a Tampa Bay average. Check the permit authority, flood information and insurance position, then support the finished value with comparable sales that fit the same neighborhood and property type." caution="Historic review and floodplain requirements can change what a renovation involves. Confirm those questions before you rely on a schedule, and tell us which details still need an answer." showCityGrid={true}/></main><Footer/></Base>

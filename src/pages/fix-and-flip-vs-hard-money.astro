@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import {brand,domain} from '../data/cities';
+const url=`https://${domain}/fix-and-flip-vs-hard-money/`;
+const faqs=[{q:"Is a fix and flip loan the same as hard money?",a:"Not exactly. Hard money is the broad category of short term, asset-based funding. A fix and flip loan is one version built to buy, renovate and resell a single property."},{q:"Do I need perfect credit?",a:"Asset-based funding weighs the property and the plan more heavily than a score, though credit can still matter. The funding source's written offer on your actual file is the only answer that counts."},{q:"Who decides if my project qualifies?",a:"The funding source does. We are connectors and introduce your project, but we do not make funding decisions."}];
+const jsonld=[{'@context':'https://schema.org','@type':'WebPage',name:'Fix and Flip vs Hard Money',url,description:'A plain comparison of fix and flip loans and hard money: how they relate, where speed and flexibility differ, and when another product fits better.',isPartOf:{'@type':'WebSite',name:brand,url:`https://${domain}/`}},{'@context':'https://schema.org','@type':'FAQPage',mainEntity:faqs.map(f=>({'@type':'Question',name:f.q,acceptedAnswer:{'@type':'Answer',text:f.a}}))},{'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Home',item:`https://${domain}/`},{'@type':'ListItem',position:2,name:'Fix and Flip vs Hard Money',item:url}]}];
+---
+<Base title="Fix and Flip vs Hard Money | Tampa Bay Fix and Flip Loans" description="A plain comparison of fix and flip loans and hard money: how they relate, where speed and flexibility differ, and when another product fits better." path="/fix-and-flip-vs-hard-money/" jsonld={jsonld} fabHref="/#deal-form">
+<Header base="/"/><main>
+<section class="guide-hero"><div class="container"><h1>Fix and Flip vs Hard Money</h1></div></section>
+<section class="section"><div class="container guide-prose">
+<p>Investors use these two terms loosely, and the overlap causes real confusion. The short version: hard money is the broad category, and a fix and flip loan is one specific shape of it. Understanding that relationship helps you ask better questions when you review an offer.</p>
+<p>This page compares them plainly, including the cases where neither is the right answer for your project.</p>
+</div></section>
+<section class="section section--tint"><div class="container guide-prose">
+<h2>What hard money means</h2>
+<p>Hard money is short term, asset-based funding from private sources. The property secures the funding, underwriting focuses on the deal rather than income documentation, and the structure favors speed and flexibility over a bank's long approval process.</p>
+<p>The category covers many purposes: bridge funding, land purchases, construction draws and renovation projects all sit under the same umbrella.</p>
+</div></section>
+<section class="section"><div class="container guide-prose">
+<h2>What a fix and flip loan adds</h2>
+<p>A fix and flip loan is hard money built for one job: buy a property, renovate it and resell it. The renovation plan is part of the review, the advance is often tied to the after-repair value, and the term matches a buy, renovate and sell timeline.</p>
+<p>Because the project assumes a resale exit, the support for your after-repair estimate carries real weight. The <a href="/fix-and-flip-project-checklist/">project checklist</a> shows how to build that support.</p>
+</div></section>
+<section class="section section--tint"><div class="container guide-prose">
+<h2>Side by side</h2>
+<div class="compare-wrap"><table class="compare-table">
+<caption class="sr-only">Comparison of fix and flip loans, general hard money and bank financing</caption>
+<thead><tr><th scope="col">Question</th><th scope="col">Fix and flip loan</th><th scope="col">General hard money</th><th scope="col">Bank financing</th></tr></thead>
+<tbody>
+<tr><th scope="row">Purpose</th><td>Buy, renovate and resell one property</td><td>Any short term, asset-secured need</td><td>Long term financing on qualifying properties</td></tr>
+<tr><th scope="row">What underwriting weighs most</th><td>The deal: purchase, scope, after-repair value</td><td>The collateral and the plan</td><td>Your income, credit and the property</td></tr>
+<tr><th scope="row">Renovation work</th><td>Built into the structure</td><td>Depends on the funding source</td><td>Often not covered</td></tr>
+<tr><th scope="row">Speed and flexibility</th><td>Fast when the file is complete</td><td>Fast when the file is complete</td><td>Slower, documentation heavy</td></tr>
+<tr><th scope="row">Best fit</th><td>A defined renovation project with a resale exit</td><td>Short term needs a bank will not touch</td><td>Strong borrowers, simple projects, longer holds</td></tr>
+</tbody>
+</table></div>
+</div></section>
+<section class="section"><div class="container guide-prose">
+<h2>When a different product fits better</h2>
+<p>If your project is a light refresh, your income and credit are strong, and the timeline is flexible, conventional financing may suit you better. If you plan to keep the property as a rental, a product built for a long hold makes more sense than a short term flip structure.</p>
+<p>Asset-based funding makes sense when the deal needs what it provides: speed, property-first review and a structure that includes the renovation. The full process is covered in <a href="/how-fix-and-flip-funding-works-in-florida/">how fix and flip funding works in Florida</a>.</p>
+</div></section>
+<section class="section section--tint" id="faq"><div class="container faq"><h2>Common questions</h2><div>{faqs.map(f=><details><summary>{f.q}</summary><p>{f.a}</p></details>)}</div></div></section>
+<section class="final-cta"><div class="container"><h2>Have a property in mind?</h2><p>Tell us what you plan to buy and improve. We will review the details and connect you with funding sources without promising an outcome.</p><a class="btn" href="/#deal-form">Submit your project <span aria-hidden="true">↗</span></a></div></section>
+</main><Footer/></Base>
