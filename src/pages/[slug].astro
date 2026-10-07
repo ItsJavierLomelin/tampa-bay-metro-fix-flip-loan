@@ -3,14 +3,14 @@ import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CityContent from '../components/CityContent.astro';
-import {cities,brand,domain,scenarios} from '../data/cities';
+import {cities,brand,domain,scenarios,localCopy} from '../data/cities';
 export function getStaticPaths(){return cities.map(city=>({params:{slug:city.slug}}));}
 const {slug}=Astro.params;
 const city=cities.find(c=>c.slug===slug);
 if (!city) return new Response('Not found', { status: 404 });
 const url=`https://${domain}/${city.slug}/`;
 const businessId=`https://${domain}/#business`;
-const faq=[{q:`Can you connect investors with fix and flip funding in ${city.name}?`,a:`Share the ${city.name} property and renovation plan. We are connectors, not a direct lender, and we cannot promise a match or approval.`},{q:'Who determines the terms?',a:'The funding source determines eligibility, terms and documentation for a specific project.'}];
+const faq=[...localCopy[city.slug].faqs,{q:'Are you a direct lender?',a:'No. We are connectors. We introduce investors to funding sources, and the funding source makes its own decisions and provides the actual terms.'},{q:'Does submitting a project guarantee funding?',a:'No. A submission starts a review and a possible introduction. It does not guarantee a match, an approval or a particular outcome.'}];
 const areas=cities.map(c=>({'@type':'City',name:c.name,containedInPlace:{'@type':'State',name:'Florida'}}));
 const jsonld=[{'@context':'https://schema.org','@type':'FinancialService','@id':businessId,name:brand,url:`https://${domain}/`,areaServed:areas,description:'Fix and flip funding connections for real estate investors across Tampa Bay. Not a direct lender.'},{'@context':'https://schema.org','@type':'Service',serviceType:'Fix and flip funding connection service',provider:{'@id':businessId},areaServed:{'@type':'City',name:city.name,containedInPlace:{'@type':'State',name:'Florida'}},url},{'@context':'https://schema.org','@type':'FAQPage',mainEntity:faq.map(f=>({'@type':'Question',name:f.q,acceptedAnswer:{'@type':'Answer',text:f.a}}))},{'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Home',item:`https://${domain}/`},{'@type':'ListItem',position:2,name:`${city.name}, FL`,item:url}]}];
 ---
