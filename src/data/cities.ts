@@ -2,7 +2,7 @@ export interface City { slug:string; name:string; county:string; title:string; d
 export const brand = 'Tampa Bay Fix and Flip Loans';
 export const domain = 'tampabayfixandflip.loansapp.cfd';
 export const formName = 'Tampa-Bay-Fix-and-Flip-Loans-Form';
-export const ga4Id = '';
+export const ga4Id = 'G-DRBXHZ71DD';
 export const cities: City[] = [
   {
     "slug": "tampa",
